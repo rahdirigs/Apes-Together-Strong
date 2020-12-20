@@ -135,8 +135,8 @@ export default class Register extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" icon color="red" textAlign="center">
-            <Icon name="send" color="red" />
+          <Header as="h2" icon color="violet" textAlign="center">
+            <Icon name="send" color="violet" />
             Register for Apes Together Strong
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
@@ -192,7 +192,7 @@ export default class Register extends Component {
                 disabled={loading}
                 className={loading ? "loading" : ""}
                 fluid
-                color="red"
+                color="violet"
                 size="large"
               >
                 Register
