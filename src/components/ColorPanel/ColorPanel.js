@@ -14,6 +14,7 @@ export default class ColorPanel extends Component {
         color="black"
       >
         <Divider />
+
         <Button icon="add" size="small" color="blue"></Button>
       </Sidebar>
     )
