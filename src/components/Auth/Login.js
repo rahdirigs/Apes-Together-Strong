@@ -20,7 +20,7 @@ export default class Login extends Component {
     loading: false,
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -28,17 +28,17 @@ export default class Login extends Component {
     return email && password
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
     if (this.isFormValid(this.state)) {
       this.setState({ errors: [], loading: true })
       firebase
         .auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then((signedInUser) => {
+        .then(signedInUser => {
           console.log(signedInUser)
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err)
           this.setState({
             errors: this.state.errors.concat(err),
@@ -48,13 +48,11 @@ export default class Login extends Component {
     }
   }
 
-  displayErrors = (errors) =>
+  displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>)
 
   handleInputErrors = (errors, inputName) => {
-    return errors.some((error) =>
-      error.message.toLowerCase().includes(inputName)
-    )
+    return errors.some(error => error.message.toLowerCase().includes(inputName))
       ? "error"
       : ""
   }
@@ -65,8 +63,8 @@ export default class Login extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" icon color="violet" textAlign="center">
-            <Icon name="send" color="violet" />
+          <Header as="h2" icon color="red" textAlign="center">
+            <Icon name="send" color="red" />
             Login to Apes Together Strong
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
@@ -99,7 +97,7 @@ export default class Login extends Component {
                 disabled={loading}
                 className={loading ? "loading" : ""}
                 fluid
-                color="violet"
+                color="red"
                 size="large"
               >
                 Login

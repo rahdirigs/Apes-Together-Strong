@@ -23,9 +23,8 @@ const store = createStore(rootReducer, composeWithDevTools())
 
 class Root extends Component {
   componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        //console.log(user)
         this.props.setUser(user)
         this.props.history.push("/")
       } else {
@@ -48,7 +47,7 @@ class Root extends Component {
   }
 }
 
-const mapStateFromProps = (state) => ({
+const mapStateFromProps = state => ({
   isLoading: state.user.isLoading,
 })
 

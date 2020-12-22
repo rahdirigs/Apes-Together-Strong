@@ -24,7 +24,7 @@ export default class Register extends Component {
     usersRef: firebase.database().ref("users"),
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -64,21 +64,21 @@ export default class Register extends Component {
     }
   }
 
-  saveUser = (createdUser) => {
+  saveUser = createdUser => {
     return this.state.usersRef.child(createdUser.user.uid).set({
       name: createdUser.user.displayName,
       avatar: createdUser.user.photoURL,
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
     if (this.isFormValid()) {
       this.setState({ errors: [], loading: true })
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then((createdUser) => {
+        .then(createdUser => {
           console.log(createdUser)
           createdUser.user
             .updateProfile({
@@ -93,7 +93,7 @@ export default class Register extends Component {
                 //this.setState({ loading: false })
               })
             })
-            .catch((err) => {
+            .catch(err => {
               console.error(err)
               this.setState({
                 errors: this.state.errors.concat(err),
@@ -101,7 +101,7 @@ export default class Register extends Component {
               })
             })
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err)
           this.setState({
             errors: this.state.errors.concat(err),
@@ -111,13 +111,11 @@ export default class Register extends Component {
     }
   }
 
-  displayErrors = (errors) =>
+  displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>)
 
   handleInputErrors = (errors, inputName) => {
-    return errors.some((error) =>
-      error.message.toLowerCase().includes(inputName)
-    )
+    return errors.some(error => error.message.toLowerCase().includes(inputName))
       ? "error"
       : ""
   }
@@ -135,8 +133,8 @@ export default class Register extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" icon color="violet" textAlign="center">
-            <Icon name="send" color="violet" />
+          <Header as="h2" icon color="red" textAlign="center">
+            <Icon name="send" color="red" />
             Register for Apes Together Strong
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
@@ -192,7 +190,7 @@ export default class Register extends Component {
                 disabled={loading}
                 className={loading ? "loading" : ""}
                 fluid
-                color="violet"
+                color="red"
                 size="large"
               >
                 Register

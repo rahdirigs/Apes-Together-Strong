@@ -36,7 +36,7 @@ export default class UserPanel extends Component {
     const { user } = this.state
 
     return (
-      <Grid style={{ background: "#5600eb" }}>
+      <Grid style={{ background: "red" }}>
         <Grid.Column>
           <Grid.Row style={{ padding: "0.25em", margin: 0 }}>
             <Header inverted floated="left" as="h3">
